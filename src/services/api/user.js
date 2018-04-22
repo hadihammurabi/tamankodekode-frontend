@@ -16,7 +16,8 @@ user.auth = async (username, password) => {
 user.signup = async (username, password) => {
   let data = await api.post('/user', {
     username,
-    password
+    password,
+    role_id: 2
   })
   return data
 }
