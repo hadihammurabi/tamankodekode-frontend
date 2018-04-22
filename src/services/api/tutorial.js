@@ -1,14 +1,14 @@
 import api from './axios'
 
-let kategori = {}
+let tutorial = {}
 
-kategori.get = async (payload = {}) => {
-  payload.headers = {
-    "Authorization": `Bearer ${localStorage.getItem('token')}`,
-  }
-  let data = (await api.get('/tutorial', payload)).data
-  console.log(data);
+tutorial.get = async (kategori) => {
+  let data = (await api.get(`/tutorial?kategori=${kategori}`, {
+    headers: {
+      "Authorization": `Bearer ${localStorage.getItem('token')}`
+    }
+  })).data
   return data
 }
 
-export default kategori
+export default tutorial

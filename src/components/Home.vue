@@ -1,12 +1,12 @@
 <template>
   <v-container grid-list-xl>
     <v-layout row wrap>
-      <v-flex lg6>
+      <v-flex md6>
         <div class="video-container">
-          <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/p3HO51WWngg?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          <iframe src="https://www.youtube-nocookie.com/embed/p3HO51WWngg?rel=0&showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
       </v-flex>
-      <v-flex lg6>
+      <v-flex md6>
         <v-card>
           <v-card-text>
             <authform></authform>
@@ -34,7 +34,9 @@
 
 <script>
 import Authform from './Authform'
-import KategoriService from '../services/api/kategori'
+import HTML from '../assets/html.png'
+import PHP from '../assets/php.png'
+import JS from '../assets/js.png'
 
 export default {
   components: {
@@ -42,16 +44,26 @@ export default {
   },
   data () {
     return {
-      afterLogin: '',
-      kategoris: []
+      afterLogin: ''
     }
   },
-  async mounted () {
-    try {
-      let kategori = await KategoriService.getAll({limit:3})
-      this.kategoris = kategori
-    } catch (err) {
-      console.log(err)
+  computed: {
+    kategoris() {
+      return [
+        {
+          slug: 'html',
+          nama: 'HTML',
+          image: HTML
+        }, {
+          slug: 'php',
+          nama: 'PHP',
+          image: PHP
+        }, {
+          slug: 'js',
+          nama: 'Javascript',
+          image: JS
+        }
+      ]
     }
   },
   methods: {

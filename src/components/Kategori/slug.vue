@@ -44,12 +44,11 @@ export default {
       tut: {},
     };
   },
-  beforeCreate () {
+  async beforeCreate () {
     if(!this.$store.getters.token) this.$router.push('/');
-  },
-  async mounted () {
+
     try {
-      let tuts = await TutorialService.get({kategori: this.$route.params.slug});
+      let tuts = await TutorialService.get(this.$route.params.slug);
       this.tutorials = tuts.data;
       this.tut = this.tutorials[0];
     } catch (err) {
