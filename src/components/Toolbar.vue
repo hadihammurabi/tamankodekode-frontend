@@ -1,6 +1,6 @@
 <template>
   <v-toolbar color="primary" dark>
-    <v-toolbar-title>Taman Kode-Kode</v-toolbar-title>
+    <v-toolbar-title @click="$router.push('/kategori')">Taman Kode-Kode</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-menu v-if="token">
       <v-btn icon slot="activator">

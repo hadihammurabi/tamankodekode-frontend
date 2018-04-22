@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     goTutorial (kategori) {
-      this.$router.push(`/tutorial/${kategori}`)
+      this.$router.push(`/kategori/${kategori}`)
     }
   }
 }
