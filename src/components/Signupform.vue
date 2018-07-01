@@ -1,13 +1,13 @@
 <template>
   <v-container>
     <v-alert :value="true" color="error" v-model="unsuccess" dismissible>
-      Gagal mendaftar. <br/> Username sudah terpakai, silakan ganti yang lainnya.
+      Gagal mendaftar. <br/> Email sudah terpakai, silakan ganti yang lainnya.
     </v-alert>
     <v-form v-model="valid">
       <v-text-field
-        label="Username"
-        v-model="username"
-        :rules="usernameRules"
+        label="Email"
+        v-model="email"
+        :rules="emailRules"
        ></v-text-field>
       <v-text-field
         label="Password"
@@ -36,20 +36,23 @@ export default {
   data () {
     return {
       valid: false,
-      username: '',
-      usernameRules: [
-        v => !!v || 'Username wajib diisi',
-        v => v.length >= 3 || 'Username minimal 3 karakter.',
+      email: '',
+      emailRules: [
+        v => !!v || 'Email wajib diisi!',
+        v => {
+          const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(v) || 'Masukkan email dengan benar!';
+        },
       ],
       password: '',
       passwordRules: [
-        v => !!v || 'Password wajib diisi',
-        v => v.length >= 6 || 'Password minimal 6 karakter.',
+        v => !!v || 'Password wajib diisi!',
+        v => v.length >= 6 || 'Password minimal 6 karakter!',
       ],
       passwordConfirm: '',
       passwordConfirmRules: [
-        v => !!v || 'Password Confirmation wajib diisi.',
-        v => v === this.password || 'Password Confirmation tidak sama dengan Password.'
+        v => !!v || 'Password Confirmation wajib diisi!',
+        v => v === this.password || 'Password Confirmation harus sama dengan Password!'
       ],
       unsuccess: false
     }
@@ -57,7 +60,7 @@ export default {
   methods: {
     async daftar () {
       try {
-        const data = await UserService.signup(this.username, this.password)
+        const data = await UserService.signup(this.email, this.password)
         window.location.replace('/')
       } catch (err) {
         this.unsuccess = true

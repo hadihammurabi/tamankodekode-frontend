@@ -5,9 +5,9 @@
     </v-alert>
     <v-form v-model="valid">
       <v-text-field
-        label="Username"
-        v-model="username"
-        :rules="usernameRules"
+        label="Email"
+        v-model="email"
+        :rules="emailRules"
       ></v-text-field>
       <v-text-field
         label="Password"
@@ -32,25 +32,31 @@ export default {
     return {
       valid: false,
       unsuccess: false,
-      username: '',
-      usernameRules: [
-        v => !!v || 'Username wajib diisi.',
-        v => v.length >= 3 || 'Username minimal 3 karakter.'
+      email: '',
+      emailRules: [
+        v => !!v || 'Email wajib diisi!',
+        v => {
+          const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(v) || 'Masukkan email dengan benar!';
+        }
       ],
       password: '',
       passwordRules: [
-        v => !!v || 'Password wajib diisi.',
-        v => v.length >= 6 || 'Password minimal 6 karakter.'
+        v => !!v || 'Password wajib diisi!',
+        v => v.length >= 6 || 'Password minimal 6 karakter!'
       ],
     }
   },
   methods: {
     async masuk () {
       try {
-        let response = await UserService.auth(this.username, this.password)
-        this.$store.commit('token', response.data.token)
-        this.$router.push('/kategori')
+        let response = await UserService.auth(this.email, this.password)
+        if (response.data.token != undefined) {
+          this.$store.commit('token', response.data.token)
+          this.$router.push('/kategori')
+        }
       } catch (e) {
+      } finally {
         this.unsuccess = true
       }
     }

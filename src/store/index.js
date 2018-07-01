@@ -9,7 +9,8 @@ const mutations = {
       localStorage.removeItem('token')
     } else {
       state.token = token
-      localStorage.setItem('token', state.token)
+      localStorage.setItem('token', state.token.token)
+      localStorage.setItem('refreshToken', state.token.refreshToken)
     }
   },
   afterLogin (state, afterLogin) {

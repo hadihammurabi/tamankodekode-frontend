@@ -2,20 +2,17 @@ import api from './axios'
 
 let user = {}
 
-user.auth = async (username, password) => {
-  let data = await api.post('/user', {
-    act: "auth",
-    data: {
-      username,
-      password
-    }
+user.auth = async (email, password) => {
+  let data = await api.post('/auth', {
+    email,
+    password
   })
   return data
 }
 
-user.signup = async (username, password) => {
+user.signup = async (email, password) => {
   let data = await api.post('/user', {
-    username,
+    email,
     password,
     role_id: 2
   })
