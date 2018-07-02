@@ -15,6 +15,9 @@ const mutations = {
   },
   afterLogin (state, afterLogin) {
     state.afterLogin = afterLogin
+  },
+  page (state, name) {
+    state.page = name
   }
 }
 
@@ -25,13 +28,17 @@ const getters = {
   },
   afterLogin (state) {
     return state.afterLogin
+  },
+  page (state) {
+    return state.page
   }
 }
 
 const store = new Vuex.Store({
   state: {
     token: '',
-    afterLogin: ''
+    afterLogin: '',
+    page: 'home'
   },
   mutations,
   getters

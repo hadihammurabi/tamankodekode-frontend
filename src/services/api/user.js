@@ -19,4 +19,12 @@ user.signup = async (email, password) => {
   return data
 }
 
+user.whois = async (token) => {
+  return (await api.get('/user', {
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    }
+  })).data
+}
+
 export default user
