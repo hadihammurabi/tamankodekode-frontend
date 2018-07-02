@@ -16,9 +16,9 @@
         </v-list>
       </v-menu>
     </v-toolbar>
-    <v-alert :value="verified && page != 'home'" type="warning">
+    <v-alert :value="verified == 0 && page != 'home'" type="warning">
       Akun Anda belum terverifikasi. Silakan ikuti petunjuk verifikasi di email Anda!
-      <v-btn color="warning">Kirim ulang kode verifikasi</v-btn>
+      <v-btn color="warning" @click="verify()">Kirim ulang kode verifikasi</v-btn>
     </v-alert>
   </div>
 </template>
@@ -44,6 +44,11 @@ export default {
     logout () {
       this.$store.commit('token', null)
       window.location.replace('/')
+    },
+    async verify () {
+      try {
+        await user.verify(this.$store.getters.token)
+      } catch (e) { }
     }
   },
   async beforeCreate () {

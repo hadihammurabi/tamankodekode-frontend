@@ -27,4 +27,12 @@ user.whois = async (token) => {
   })).data
 }
 
+user.verify = async (token) => {
+  return (await api.post('/user/verify', {}, {
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    }
+  })).data
+}
+
 export default user

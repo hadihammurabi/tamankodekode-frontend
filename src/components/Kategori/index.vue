@@ -38,12 +38,6 @@ export default {
   async beforeCreate () {
     if(!this.$store.getters.token) this.$router.push('/')
     this.$store.commit('page', 'kategori')
-
-    try {
-      console.log(await user.whois(this.$store.getters.token))
-    } catch (e) {
-      console.log('logout')
-    }
   },
   async mounted () {
     try {
