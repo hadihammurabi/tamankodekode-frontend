@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xl>
     <v-layout>
-      <v-flex md6 offset-xs3>
+      <v-flex md7 offset-md2>
         <v-card>
           <v-card-text>
             <authform></authform>

@@ -37,11 +37,14 @@ export default {
   },
   async beforeCreate () {
     if(!this.$store.getters.token) this.$router.push('/')
+    const userdata = await this.$store.getters.user
+    if (userdata.verified === false) this.$router.push('/emailconfirm')
     this.$store.commit('page', 'kategori')
   },
   async mounted () {
     try {
-      let kategoris = await KategoriService.getAll()
+      //let kategoris = await KategoriService.getAll()
+      let kategoris
       this.kategoris = kategoris
     } catch (err) {
       console.log(err)

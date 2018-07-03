@@ -19,18 +19,19 @@ user.signup = async (email, password) => {
   return data
 }
 
-user.whois = async (token) => {
-  return (await api.get('/user', {
+user.whois = async () => {
+  const user = (await api.get('/user', {
     headers: {
-      "Authorization": `Bearer ${token}`,
+      authorization: `Bearer ${localStorage.getItem('token')}`,
     }
   })).data
+  return user
 }
 
-user.verify = async (token) => {
+user.verify = async () => {
   return (await api.post('/user/verify', {}, {
     headers: {
-      "Authorization": `Bearer ${token}`,
+      authorization: `Bearer ${localStorage.getItem('token')}`,
     }
   })).data
 }

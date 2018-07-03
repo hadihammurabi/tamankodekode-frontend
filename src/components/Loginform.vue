@@ -52,7 +52,7 @@ export default {
       try {
         let response = await UserService.auth(this.email, this.password)
         if (response.data.token != undefined) {
-          this.$store.commit('token', response.data.token)
+          this.$store.commit('token', response.data)
           this.$router.push('/kategori')
         }
       } catch (e) {
