@@ -1,5 +1,5 @@
 <template>
-  <v-app class="grey lighten-2">
+  <v-app>
     <toolbar></toolbar>
     <v-content>
       <v-container fluid>
