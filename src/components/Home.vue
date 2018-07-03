@@ -21,38 +21,18 @@ export default {
   },
   data () {
     return {
-      afterLogin: ''
     }
   },
   computed: {
     kategoris() {
       return [
-        {
-          slug: 'html',
-          nama: 'HTML',
-          image: HTML
-        }, {
-          slug: 'php',
-          nama: 'PHP',
-          image: PHP
-        }, {
-          slug: 'js',
-          nama: 'Javascript',
-          image: JS
-        }
       ]
     }
   },
   methods: {
-    goLogin (cat) {
-      this.$store.commit('afterLogin', cat.toLowerCase())
-      const form = document.querySelector('[aria-label=Username]')
-      form.focus()
-    }
   },
   beforeCreate () {
     if (this.$store.getters.token) this.$router.push('/kategori')
-    this.$store.commit('page', 'home')
   }
 }
 </script>
