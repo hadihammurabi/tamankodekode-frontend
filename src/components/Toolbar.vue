@@ -39,7 +39,7 @@ export default {
   methods: {
     logout () {
       this.$store.commit('token', null)
-      this.$router.push('/')
+      window.location = '/'
     },
   },
   async beforeCreate () {
