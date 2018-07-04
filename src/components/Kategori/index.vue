@@ -5,7 +5,7 @@
         <v-container>
           <v-card>
             <v-card-text>
-              <v-flex text-sm-center>
+              <v-flex text-xs-center>
                 <img :src="kategori.image" :alt="kategori.nama" class="catLogo">
               </v-flex>
             </v-card-text>
