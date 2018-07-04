@@ -22,12 +22,16 @@ const mutations = {
   page (state, name) {
     state.page = name
   },
+  kategori (state, kategori) {
+    state.kategori = kategori
+  },
   clear (state) {
     state = {
       token: '',
       afterLogin: '',
       page: 'home',
-      user: {}
+      user: {},
+      kategori: {}
     }
   }
 }
@@ -50,6 +54,9 @@ const getters = {
     } catch (e) {
       return {}
     }
+  },
+  kategori (state) {
+    return state.kategori
   }
 }
 
@@ -58,7 +65,8 @@ const store = new Vuex.Store({
     token: '',
     afterLogin: '',
     page: 'home',
-    user: {}
+    user: {},
+    kategori: {}
   },
   mutations,
   getters

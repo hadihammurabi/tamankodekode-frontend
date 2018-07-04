@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-layout row wrap>
-      <v-flex sm3 v-for="kategori in kategoris" :key="kategori.slug">
+      <v-flex lg2 v-for="kategori in kategoris" :key="kategori.slug">
         <v-container>
           <v-card>
             <v-card-text>
@@ -13,7 +13,7 @@
                   <v-btn
                     flat
                     color="primary"
-                    @click="goTutorial(kategori.slug)"
+                    @click="goTutorial(kategori)"
                   >Mulai Belajar</v-btn>
                 </v-flex>
               </v-layout>
@@ -51,7 +51,8 @@ export default {
   },
   methods: {
     goTutorial (kategori) {
-      this.$router.push(`/kategori/${kategori}`)
+      this.$store.commit('kategori', kategori)
+      this.$router.push(`/kategori/${kategori.slug}`)
     }
   }
 }

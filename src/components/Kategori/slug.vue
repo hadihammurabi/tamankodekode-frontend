@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xl>
     <v-layout row wrap v-if="tutorials.length > 0">
-      <v-flex lg6>
+      <v-flex md6>
         <!--iframe
           width="560" 
           height="315" 
@@ -18,7 +18,18 @@
           allowfullscreen>
         </iframe>
       </v-flex>
-      <v-flex lg6>
+      <v-flex md6>
+        <v-card>
+          <v-card-title>
+            <v-btn
+              flat
+              color="red"
+              @click="() => this.$router.push('/kategori')"
+              ><v-icon>keyboard_arrow_left</v-icon>Kembali</v-btn>
+            <h2>{{ $store.getters.kategori.title }}</h2>
+          </v-card-title>
+        </v-card>
+        <br/>
         <v-card>
           <v-card-text>
             <v-list>
@@ -70,12 +81,12 @@ export default {
   },
   async beforeCreate () {
     if(!this.$store.getters.token) this.$router.push('/');
+    if(!this.$store.getters.kategori.title) this.$router.push('/kategori');
 
     try {
       let tuts = await TutorialService.get(this.$route.params.slug);
       this.tutorials = tuts;
       this.tut = tuts[0];
-      console.log(this.tut)
     } catch (err) {
       console.log(err);
     }
