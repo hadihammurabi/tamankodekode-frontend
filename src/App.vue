@@ -41,7 +41,7 @@ export default {
 
 <style>
 .catLogo {
-  width: 100%;
+  width: 50%;
   height: 100px;
   margin: auto;
 }

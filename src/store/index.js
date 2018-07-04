@@ -19,9 +19,6 @@ const mutations = {
   afterLogin (state, afterLogin) {
     state.afterLogin = afterLogin
   },
-  page (state, name) {
-    state.page = name
-  },
   kategori (state, kategori) {
     state.kategori = kategori
   },
@@ -43,9 +40,6 @@ const getters = {
   },
   afterLogin (state) {
     return state.afterLogin
-  },
-  page (state) {
-    return state.page
   },
   async user (state) {
     try {

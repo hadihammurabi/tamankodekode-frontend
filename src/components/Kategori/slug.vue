@@ -25,7 +25,7 @@
               flat
               color="red"
               @click="() => this.$router.push('/kategori')"
-              ><v-icon>keyboard_arrow_left</v-icon>Kembali</v-btn>
+              ><v-icon>arrow_back</v-icon>Kembali</v-btn>
             <h2>{{ $store.getters.kategori.title }}</h2>
           </v-card-title>
         </v-card>

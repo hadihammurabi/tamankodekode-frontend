@@ -10,8 +10,8 @@
           <v-icon>person</v-icon>
         </v-btn>
         <v-list>
-          <v-list-tile @click="logout()">
-            <v-list-tile-title>Logout</v-list-tile-title>
+          <v-list-tile @click="profil()">
+            <v-list-tile-title>Profil</v-list-tile-title>
           </v-list-tile>
         </v-list>
       </v-menu>
@@ -25,7 +25,6 @@ import user from '../services/api/user'
 export default {
   data () {
     return {
-      verified: false
     }
   },
   computed: {
@@ -37,9 +36,8 @@ export default {
     }
   },
   methods: {
-    logout () {
-      this.$store.commit('token', null)
-      window.location = '/'
+    profil () {
+      this.$router.push('/profil')
     },
   },
   async beforeCreate () {
