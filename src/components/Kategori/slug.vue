@@ -1,6 +1,6 @@
 <template>
   <v-container grid-list-xl>
-    <v-layout row wrap>
+    <v-layout row wrap v-if="tutorials.length > 0">
       <v-flex lg6>
         <iframe
           width="560" 
@@ -31,6 +31,18 @@
         </v-card>
       </v-flex>
     </v-layout>
+    <v-layout v-else>
+      <v-flex lg6 offset-md3>
+        <v-card>
+          <v-card-text>
+            <p class="text-xs-center">
+              Tutorial ini sedang dalam proses pembuatan.<br/>
+              Silakan lihat tutorial lainnya <a href="#/kategori">di sini</a>!
+            </p>
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 
@@ -43,6 +55,11 @@ export default {
       tutorials: [],
       tut: {},
     };
+  },
+  computed: {
+    slug () {
+      return this.$route.params.slug;
+    }
   },
   async beforeCreate () {
     if(!this.$store.getters.token) this.$router.push('/');

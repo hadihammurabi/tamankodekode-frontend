@@ -43,8 +43,7 @@ export default {
   },
   async mounted () {
     try {
-      //let kategoris = await KategoriService.getAll()
-      let kategoris
+      let kategoris = await KategoriService.getAll()
       this.kategoris = kategoris
     } catch (err) {
       console.log(err)

@@ -6,7 +6,7 @@ kategori.getAll = async (payload = {}) => {
   payload.headers = {
     authorization: `Bearer ${localStorage.getItem('token')}`,
   }
-  let data = (await api.get('/kategori', payload)).data.data
+  let data = (await api.get('/kategori', payload)).data
   return data
 }
 
