@@ -16,7 +16,7 @@
             <v-alert type="error" :value="!user.verified">Belum Verifikasi</v-alert>
           </v-card-text>
           <v-card-actions>
-            <v-flex text-sm-right>
+            <v-flex text-xs-right>
               <v-btn color="red" dark @click="logout()"><v-icon>exit_to_app</v-icon> Logout</v-btn>
             </v-flex>
           </v-card-actions>
