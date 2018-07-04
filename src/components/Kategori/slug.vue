@@ -2,9 +2,16 @@
   <v-container grid-list-xl>
     <v-layout row wrap v-if="tutorials.length > 0">
       <v-flex lg6>
-        <iframe
+        <!--iframe
           width="560" 
           height="315" 
+          :src="tut.url"
+          frameborder="0" 
+          allow="autoplay; encrypted-media" 
+          allowfullscreen>
+        </iframe-->
+        <iframe
+          id="player"
           :src="tut.url"
           frameborder="0" 
           allow="autoplay; encrypted-media" 
@@ -82,4 +89,8 @@ export default {
 </script>
 
 <style scoped>
+#player {
+  width: 100%;
+  height: 315px;
+}
 </style>

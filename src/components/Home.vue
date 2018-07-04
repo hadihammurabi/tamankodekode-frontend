@@ -1,7 +1,11 @@
 <template>
   <v-container grid-list-xl>
     <v-layout>
-      <v-flex md7 offset-md2>
+      <v-flex md3 class="text-xs-center">
+        <img :src="logo" id="logo" alt="Taman Kode-Kode" title="Taman Kode-Kode"/>
+        <h1>Taman Kode-Kode</h1>
+      </v-flex>
+      <v-flex md7 offset-md1>
         <v-card>
           <v-card-text>
             <authform></authform>
@@ -14,6 +18,7 @@
 
 <script>
 import Authform from './Authform'
+import logo from '../assets/logo.png'
 
 export default {
   components: {
@@ -21,6 +26,7 @@ export default {
   },
   data () {
     return {
+      logo
     }
   },
   computed: {
@@ -38,4 +44,7 @@ export default {
 </script>
 
 <style scoped>
+#logo {
+  width: 100%;
+}
 </style>

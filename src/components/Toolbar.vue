@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-toolbar color="primary" dark>
+    <v-toolbar color="primary" dark :fixed="true">
       <v-toolbar-title @click="$router.push('/kategori')">
         Taman Kode-Kode
       </v-toolbar-title>

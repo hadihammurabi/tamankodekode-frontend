@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <toolbar></toolbar>
-    <v-content>
+    <toolbar v-if="$store.getters.token"></toolbar>
+    <v-content style="margin-top: 5em">
       <v-container fluid>
         <router-view></router-view>
       </v-container>
@@ -27,23 +27,6 @@ export default {
 </script>
 
 <style>
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-}
-
-.video-container iframe,
-.video-container object,
-.video-container embed {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
 .catLogo {
   width: 100%;
   height: 200px;
