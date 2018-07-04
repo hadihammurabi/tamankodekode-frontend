@@ -22,7 +22,7 @@
                 :disabled="tutorial.id === tut.id">
                 <v-list-tile-content>
                   <v-list-tile-title>
-                    {{tutorial.nama}}
+                    {{tutorial.title}}
                   </v-list-tile-title>
                 </v-list-tile-content>
               </v-list-tile>
@@ -66,8 +66,9 @@ export default {
 
     try {
       let tuts = await TutorialService.get(this.$route.params.slug);
-      this.tutorials = tuts.data;
-      this.tut = this.tutorials[0];
+      this.tutorials = tuts;
+      this.tut = tuts[0];
+      console.log(this.tut)
     } catch (err) {
       console.log(err);
     }
