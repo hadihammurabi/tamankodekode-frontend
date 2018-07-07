@@ -3,7 +3,6 @@
     <v-toolbar color="primary" dark :fixed="true">
       <v-toolbar-title>
         <v-btn icon v-if="$store.getters.page !== 'kategori'" @click="$router.push('/kategori')"><v-icon>arrow_back</v-icon></v-btn>
-        <v-btn icon disabled v-else><v-icon></v-icon></v-btn>
           Taman Kode-Kode
       </v-toolbar-title>
       <v-spacer></v-spacer>
