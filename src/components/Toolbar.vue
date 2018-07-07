@@ -1,22 +1,25 @@
 <template>
   <div>
     <v-toolbar color="primary" dark :fixed="true">
-      <v-toolbar-title @click="$router.push('/kategori')">
-        <v-btn flat v-if="$store.getters.page !== 'kategori'"><v-icon>arrow_back</v-icon></v-btn>
-        <span>
+      <v-toolbar-title>
+        <v-btn icon v-if="$store.getters.page !== 'kategori'" @click="$router.push('/kategori')"><v-icon>arrow_back</v-icon></v-btn>
+        <v-btn icon disabled v-else><v-icon></v-icon></v-btn>
           Taman Kode-Kode
-        </span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items>
-        <v-btn flat :disabled="$store.getters.page === 'forum'" @click="$router.push('/forum')">
-          <v-icon>forum</v-icon>&nbsp;&nbsp;Forum
+      <v-tooltip bottom>
+        <v-btn icon :disabled="$store.getters.page === 'forum'" @click="$router.push('/forum')" slot="activator">
+          <v-icon>forum</v-icon>
         </v-btn>
-      </v-toolbar-items>
+        <span>Forum</span>
+      </v-tooltip>
       <v-menu v-if="token">
-        <v-btn icon slot="activator">
-          <v-icon>person</v-icon>
-        </v-btn>
+        <v-tooltip bottom slot="activator">
+          <v-btn icon slot="activator">
+            <v-icon>person</v-icon>
+          </v-btn>
+          <span>User</span>
+        </v-tooltip>
         <v-list>
           <v-list-tile @click="profil()">
             <v-list-tile-title>Profil</v-list-tile-title>
