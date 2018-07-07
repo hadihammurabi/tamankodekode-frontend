@@ -30,26 +30,10 @@ self.addEventListener('activate', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-  const req = event.request;
-  const url = new URL(req.url);
-
-  if (url.origin === location.origin)
-    event.respondWith(
-      caches.matches(req).then(function(res) {
-        return res || fetch(res);
-      })
-    );
-  else
-    event.respondWith(
-      caches.open('tamankodekode-data').then(function(cache) {
-        return fetch(req).then(function(res) {
-          cache.put(req, res.clone());
-          return res;
-        }).catch(function() {
-          return caches.match(req).then(function(res) {
-            return res || caches.match('fallback.json');
-          });
-        });
-      })
-    );
+  event.respondWith(
+    caches.match(event.request).then(function(res) {
+      if (res) return res;
+      return fetch(event.request);
+    })
+  );
 });
