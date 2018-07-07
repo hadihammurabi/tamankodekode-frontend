@@ -4,13 +4,7 @@
       <h2>Email Anda Belum Diverifikasi.</h2>
       <h4>Silakan klik di bawah ini, untuk mengirim email konfirmasi.</h4>
       <v-btn color="primary" @click="verify()" v-if="!sent">Kirim kode verifikasi</v-btn>
-      <v-alert type="success" v-else :value="true">
-        <p text-sm-center>
-          Email konfirmasi sudah terkirim.<br/>
-          Silakan periksa pesan masuk di email Anda!<br/>
-          <h3>Kirim ulang email dapat dilakukan dalam {{ wait }} detik.</h3>
-        </p>
-      </v-alert>
+      <v-btn disabled v-else>Kirim ulang dalam {{ wait }} detik</v-btn>
     </v-flex>
   </v-layout>
 </template>
