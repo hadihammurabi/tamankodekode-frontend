@@ -12,13 +12,10 @@
     <div id="app"></div>
     <!-- built files will be auto injected -->
     <script>
-      console.log('jalan');
       if ('serviceWorker' in navigator) {
-        console.log('masuk');
         window.addEventListener('load', function(){
           navigator.serviceWorker.register('/static/serviceworker.js')
             .then(function(){
-
             })
             .catch(function(e){
               console.log(e);
