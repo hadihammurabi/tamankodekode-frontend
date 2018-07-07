@@ -22,6 +22,9 @@ const mutations = {
   kategori (state, kategori) {
     state.kategori = kategori
   },
+  page (state, page) {
+    state.page = page
+  },
   clear (state) {
     state = {
       token: '',
@@ -51,6 +54,9 @@ const getters = {
   },
   kategori (state) {
     return state.kategori
+  },
+  page (state) {
+    return state.page
   }
 }
 

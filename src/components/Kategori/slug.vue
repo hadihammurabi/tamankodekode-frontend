@@ -21,11 +21,6 @@
       <v-flex md6>
         <v-card>
           <v-card-title>
-            <v-btn
-              flat
-              color="red"
-              @click="() => this.$router.push('/kategori')"
-              ><v-icon>arrow_back</v-icon>Kembali</v-btn>
             <h2>{{ $store.getters.kategori.title }}</h2>
           </v-card-title>
         </v-card>
@@ -82,6 +77,7 @@ export default {
   async beforeCreate () {
     if(!this.$store.getters.token) this.$router.push('/');
     if(!this.$store.getters.kategori.title) this.$router.push('/kategori');
+    this.$store.commit('page', 'tutorial')
 
     try {
       let tuts = await TutorialService.get(this.$route.params.slug);

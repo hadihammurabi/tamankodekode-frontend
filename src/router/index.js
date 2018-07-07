@@ -5,6 +5,7 @@ import EmailConfirm from '@/components/EmailConfirm'
 import Kategori from '@/components/Kategori'
 import KategoriSlug from '@/components/Kategori/slug'
 import Profil from '@/components/Profil'
+import Forum from '@/components/Forum'
 
 Vue.use(Router)
 
@@ -30,6 +31,10 @@ export default new Router({
       path: '/kategori/:slug',
       name: 'KategoriSlug',
       component: KategoriSlug
+    }, {
+      path: '/forum',
+      name: 'Forum',
+      component: Forum
     }
   ]
 })

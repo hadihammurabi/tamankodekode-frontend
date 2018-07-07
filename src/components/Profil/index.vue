@@ -4,11 +4,6 @@
       <v-flex md6 offset-sm3>
         <v-card>
           <v-card-title>
-            <v-btn
-              flat
-              color="red"
-              @click="() => this.$router.push('/kategori')"
-              ><v-icon>arrow_back</v-icon>Kembali</v-btn>
             <h3>{{ user.username }}</h3>
           </v-card-title>
           <v-card-text>
@@ -35,6 +30,7 @@ export default {
   },
   async beforeCreate () {
     if(!this.$store.getters.token) this.$router.push('/')
+    this.$store.commit('page', 'profil')
 
     this.user = await this.$store.getters.user
   },

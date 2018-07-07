@@ -2,9 +2,17 @@
   <div>
     <v-toolbar color="primary" dark :fixed="true">
       <v-toolbar-title @click="$router.push('/kategori')">
-        Taman Kode-Kode
+        <v-btn flat v-if="$store.getters.page !== 'kategori'"><v-icon>arrow_back</v-icon></v-btn>
+        <span>
+          Taman Kode-Kode
+        </span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <v-btn flat :disabled="$store.getters.page === 'forum'" @click="$router.push('/forum')">
+          <v-icon>forum</v-icon>&nbsp;&nbsp;Forum
+        </v-btn>
+      </v-toolbar-items>
       <v-menu v-if="token">
         <v-btn icon slot="activator">
           <v-icon>person</v-icon>

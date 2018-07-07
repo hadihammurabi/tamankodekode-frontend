@@ -39,6 +39,7 @@ export default {
   },
   async beforeCreate () {
     if(!this.$store.getters.token) this.$router.push('/')
+    this.$store.commit('page', 'kategori')
     const userdata = await this.$store.getters.user
     if (userdata.verified === false) this.$router.push('/emailconfirm')
   },
