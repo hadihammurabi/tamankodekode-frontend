@@ -25,16 +25,14 @@ export default {
         this.sent = true
         await user.verify(this.$store.getters.token)
       } catch (e) { }
-      finally {
-        const inv = setInterval(() => {
-          if (this.wait <= 0) {
-            this.sent = false
-            this.wait = 30
-            clearInterval(inv)
-          }else
-            this.wait--
-        }, 1000)
-      }
+      const inv = setInterval(() => {
+        if (this.wait <= 0) {
+          this.sent = false
+          this.wait = 30
+          clearInterval(inv)
+        }else
+          this.wait--
+      }, 1000)
     }
   },
   async beforeCreate () {
