@@ -61,7 +61,7 @@
         </v-flex>
       </v-layout>
       <v-layout v-else>
-        <v-flex lg6 offset-md3>
+        <v-flex lg6 offset-lg3>
           <v-card>
             <v-card-text>
               <p class="text-xs-center">

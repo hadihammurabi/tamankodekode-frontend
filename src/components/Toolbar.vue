@@ -20,7 +20,7 @@
           <span>User</span>
         </v-tooltip>
         <v-list>
-          <v-list-tile @click="profil()">
+          <v-list-tile @click="profil()":disabled="$store.getters.page === 'profil'">
             <v-list-tile-title>Profil</v-list-tile-title>
           </v-list-tile>
         </v-list>
